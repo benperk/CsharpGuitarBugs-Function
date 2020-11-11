@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharpguitarbugs-function", "csharpguitarbugs-function\csharpguitarbugs-function.csproj", "{643FEDFD-5130-4696-BA52-1ADC7EE122CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{643FEDFD-5130-4696-BA52-1ADC7EE122CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{643FEDFD-5130-4696-BA52-1ADC7EE122CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{643FEDFD-5130-4696-BA52-1ADC7EE122CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{643FEDFD-5130-4696-BA52-1ADC7EE122CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {59576F44-E2D2-44C0-AEB9-68DCDC1F152C}
+	EndGlobalSection
+EndGlobal
