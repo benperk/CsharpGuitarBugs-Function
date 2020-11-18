@@ -13,12 +13,35 @@ namespace csharpguitarbugs_function
             log.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
             try 
             {
+                Random r = new Random();
+                var n = r.Next(1, 10);
                 string manufacturers = String.Empty;
-                for (int i = 0; i < 25; i++)
+
+                if (n % 2 == 0)
+                {                    
+                    for (int i = 0; i < 25; i++)
+                    {
+                        manufacturers += manufacturers + "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890";
+                        //log.LogInformation($"Memory consumption = {System.GC.GetTotalMemory(false) / 1000000} MB.");
+                        System.Threading.Thread.Sleep(1000);
+                    }
+                }
+                else
                 {
-                    manufacturers += manufacturers + "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890";
-                    //log.LogInformation($"Memory consumption = {System.GC.GetTotalMemory(false) / 1000000} MB.");
-                    System.Threading.Thread.Sleep(1000);
+                    var m = r.Next(1, 100);
+                    int j = 10;
+                    int k = 500;
+                    if (m % 5 == 0)
+                    {
+                        j = 5;
+                        k = 750;
+                    }
+                    for (int i = 0; i < j; i++)
+                    {
+                        manufacturers += manufacturers + "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890";
+                        //log.LogInformation($"Memory consumption = {System.GC.GetTotalMemory(false) / 1000000} MB.");
+                        System.Threading.Thread.Sleep(k);
+                    }
                 }
             }
             catch (System.Exception ex)
