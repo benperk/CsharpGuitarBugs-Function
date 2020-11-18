@@ -14,7 +14,7 @@ namespace csharpguitarbugs_function
             try 
             {
                 Random r = new Random();
-                var n = r.Next(1, 10);
+                var n = r.Next(1, 20);
                 string manufacturers = String.Empty;
 
                 if (n % 2 == 0)
