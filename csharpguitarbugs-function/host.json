@@ -1,7 +1,9 @@
 {
-    "version": "2.0",
+  "version": "2.0",
+  "id": "csharpguitar-elx-lock",
   "logging": {
     "applicationInsights": {
+      "isEnabled": true,
       "samplingExcludedTypes": "Request",
       "samplingSettings": {
         "isEnabled": true
