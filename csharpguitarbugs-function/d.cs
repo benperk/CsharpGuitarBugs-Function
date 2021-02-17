@@ -22,7 +22,6 @@ namespace csharpguitarbugs_function
                     for (int i = 0; i < 25; i++)
                     {
                         manufacturers += manufacturers + "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890";
-                        //log.LogInformation($"Memory consumption = {System.GC.GetTotalMemory(false) / 1000000} MB.");
                         System.Threading.Thread.Sleep(1000);
                     }
                 }
@@ -39,13 +38,13 @@ namespace csharpguitarbugs_function
                     for (int i = 0; i < j; i++)
                     {
                         manufacturers += manufacturers + "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890";
-                        //log.LogInformation($"Memory consumption = {System.GC.GetTotalMemory(false) / 1000000} MB.");
                         System.Threading.Thread.Sleep(k);
                     }
                 }
             }
             catch (System.Exception ex)
             {
+                log.LogInformation(ex.Message);
                 log.LogInformation($"A handled excpetion happened.");
                 log.LogInformation($"Why did this happen and how can I resolve it or find out the issue?");
             }
