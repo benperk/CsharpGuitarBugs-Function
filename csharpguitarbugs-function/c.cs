@@ -15,18 +15,12 @@ namespace csharpguitarbugs_function
             List<string> manufacturers = new List<string>();
 
             Random r = new Random();
-            //var count = 1;
             var n = r.Next(1, 100);
-            ///*if (n % 5 == 0)*/ count = 3;
 
             if (n % 5 == 0)
             {
                 manufacturers.Add(GetManufacturer("\"Gibson Fender Charvel Taylor Jackson MartinandCompany Dean Epiphone Takamine"));
-            }                
-            //for (int i = 0; i < count; i++)
-            //{
-            //    manufacturers.Add(GetManufacturer("\"Gibson Fender Charvel Taylor Jackson MartinandCompany Dean Epiphone Takamine"));
-            //}
+            }
         }
         public static string GetManufacturer(string manufacturer)
         {
