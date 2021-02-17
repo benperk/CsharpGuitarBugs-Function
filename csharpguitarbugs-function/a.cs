@@ -30,6 +30,7 @@ namespace csharpguitarbugs_function
             {
                 log.LogInformation("A handled excpetion happened.");
                 log.LogInformation("Why did this happen and how can I resolve it or find out the issue?");
+                log.LogInformation(ex.Message);
             }
         }
     }
