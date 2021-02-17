@@ -16,7 +16,8 @@ namespace csharpguitarbugs_function
     {
         [FunctionName("e")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, CancellationToken cancellationToken,
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] 
+            HttpRequest req, CancellationToken cancellationToken,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
@@ -27,9 +28,9 @@ namespace csharpguitarbugs_function
 
                 List<string> random = new List<string>();
                 Random r = new Random();
-                var length = 1500;
+                var length = 1000;
                 var n = r.Next(1, 100);
-                if (n % 5 == 0) length = 750;
+                if (n % 5 == 0) length = 500;
 
                 for (int i = 0; i < length; i++)
                 {
@@ -70,6 +71,7 @@ namespace csharpguitarbugs_function
             }
             catch (System.Exception ex)
             {
+                log.LogInformation(ex.Message);
                 return new BadRequestObjectResult("This shouldn't ever happen, but if it does, please help me fix it, thanks.");
             }
         }
