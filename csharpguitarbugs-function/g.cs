@@ -14,7 +14,7 @@ namespace csharpguitarbugs_function
 
             Random r = new Random();
             var number = r.Next(1, 100);
-            if (number % 2 == 0)
+            if (number % 3 == 0)
             {
                 try
                 {
@@ -35,12 +35,11 @@ namespace csharpguitarbugs_function
                 {
                     System.Threading.Thread.Sleep(5000);
                     log.LogInformation($"C# Timer trigger is working slow...I'm getting nervous");
-                    System.Threading.Thread.Sleep(50000);
+                    System.Threading.Thread.Sleep(20000);
                     throw new System.Exception("An unhandled excpetion was thrown, at least that's what I think.");
                 }
                 else
                 {
-                    //log.LogInformation($"C# Timer trigger is working like a charm, no problem.");
                     System.Threading.Thread.Sleep(25000);
                     log.LogInformation($"C# Timer trigger function successfully completed at: {DateTime.Now}");
                 }
