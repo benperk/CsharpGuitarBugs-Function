@@ -14,7 +14,6 @@ namespace csharpguitarbugs_function
         [FunctionName("b")]
         public static async Task Run([EventHubTrigger("elx", Connection = "EVENT_HUB_CONNECTION_STRING")] EventData[] events, ILogger log)
         {
-            //var exceptions = new List<Exception>();
             foreach (EventData eventData in events)
             {
                 string messageBody = Encoding.UTF8.GetString(eventData.Body.Array, eventData.Body.Offset, eventData.Body.Count);
@@ -34,12 +33,6 @@ namespace csharpguitarbugs_function
                 
                 await Task.Yield();                
             }
-
-            //if (exceptions.Count > 1)
-            //    throw new AggregateException(exceptions);
-
-            //if (exceptions.Count == 1)
-            //    throw exceptions.Single();
         }
     }
 }
