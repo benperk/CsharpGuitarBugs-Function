@@ -28,9 +28,9 @@ namespace csharpguitarbugs_function
 
                 List<string> random = new List<string>();
                 Random r = new Random();
-                var length = 1000;
+                var length = 700;
                 var n = r.Next(1, 100);
-                if (n % 5 == 0) length = 500;
+                if (n % 5 == 0) length = 400;
 
                 for (int i = 0; i < length; i++)
                 {
