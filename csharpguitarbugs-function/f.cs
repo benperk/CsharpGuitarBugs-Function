@@ -17,8 +17,6 @@ namespace csharpguitarbugs_function
             LeaseCollectionName = "leases", 
             CreateLeaseCollectionIfNotExists = true)]IReadOnlyList<Document> input, ILogger log)
         {
-            List<string> random = new List<string>();
-
             if (input != null && input.Count > 0)
             {
                 log.LogInformation($"Documents retrieved in this invocation is {input.Count}");
@@ -37,11 +35,16 @@ namespace csharpguitarbugs_function
                     }
                 }
 
+                int iteration = 1;
+                int length = 1000;
+                if (input.Count > 50 && input.Count <= 60) length = 450;
+                if (input.Count > 60) length = 250;
+
                 string memoryTaker = "--WHAT-DOES-IMMUTABLE-MEAN";
                 foreach (var document in input)
-                {
+                {                    
                     n = r.Next(1, 100);
-                    log.LogInformation($"Processing document with Id: {document.Id}");
+                    log.LogInformation($"Processing document with Id: {document.Id} ({iteration} of {input.Count})");
                     log.LogInformation($"SelfLink: {document.SelfLink}");
                     log.LogInformation($"ResourceId: {document.ResourceId}");
                     log.LogInformation($"AltLink: {document.AltLink}");
@@ -49,16 +52,17 @@ namespace csharpguitarbugs_function
                     log.LogInformation($"ETag: {document.ETag}");
                     log.LogInformation($"Timestamp: {document.Timestamp}");
                     log.LogInformation($"TimeToLive: {document.TimeToLive}");
+                    iteration++;
 
                     if (n % 2 == 0)
                     {
-                        for (int i = 0; i < 1000; i++)
+                        for (int i = 0; i < length; i++)
                         {
-                            memoryTaker += memoryTaker;
+                            memoryTaker = memoryTaker + "--WHAT-DOES-IMMUTABLE-MEAN--WHAT-DOES-IMMUTABLE-MEAN--WHAT-DOES-IMMUTABLE-MEAN";
                             System.Threading.Thread.Sleep(10);
                             if (i % 50 == 0)
                             {
-                                log.LogInformation($"We are on number: {i}, the length is: {memoryTaker.Length}");
+                                log.LogInformation($"Processing, iteration: {i} consuming: {memoryTaker.Length}");
                             }
                         }
                         if (n % 4 == 0)
@@ -71,31 +75,24 @@ namespace csharpguitarbugs_function
                             {
                                 log.LogInformation($"A '{ex.HResult}' exception happened with a message: '{ex.Message}' so will retry...");
                                 System.Threading.Thread.Sleep(1000);
-                                log.LogInformation("Success... :-)    on to the next document...");
+                                log.LogInformation($"Reprocessed document with Id: {document.Id}, success...");
                             }
                         }
                     }
                     else
                     {
-                        for (int i = 0; i < 1000; i++)
+                        for (int i = 0; i < length; i++)
                         {
-                            random.Add(System.Guid.NewGuid().ToString());
-                            var s = r.Next(10, 50);
-                            System.Threading.Thread.Sleep(s);
+                            System.Threading.Thread.Sleep(10);
                             if (i % 50 == 0)
                             {
-                                log.LogInformation($"Just keeping you up to speed on the processing, still working, we are on number {i}");
+                                log.LogInformation($"Processing, iteration: {i}");
                             }
                         }
                     }
-
-                    if (n % 25 == 0) random.RemoveAt(1010);
+                    if (n % 50 == 0) throw new AccessViolationException("Why did you do that?  You should know better");
                 }                
-            }
-            random.Sort();
-            random.Reverse();
-            random.RemoveAt(50);
-            random.Reverse();            
+            }           
         }
     }
 }
