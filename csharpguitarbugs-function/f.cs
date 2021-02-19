@@ -37,8 +37,8 @@ namespace csharpguitarbugs_function
 
                 int iteration = 1;
                 int length = 1000;
-                if (input.Count > 50 && input.Count <= 60) length = 450;
-                if (input.Count > 60) length = 250;
+                if (input.Count > 40 && input.Count <= 50) length = 450;
+                if (input.Count > 50) length = 250;
 
                 string memoryTaker = "--WHAT-DOES-IMMUTABLE-MEAN";
                 foreach (var document in input)
@@ -89,10 +89,10 @@ namespace csharpguitarbugs_function
                                 log.LogInformation($"Processing, iteration: {i}");
                             }
                         }
-                    }
-                    if (n % 50 == 0) throw new AccessViolationException("Why did you do that?  You should know better");
-                }                
-            }           
+                    }                    
+                }
+                if (n % 50 == 0) throw new AccessViolationException("Why did you do that?  You should know better");
+            }            
         }
     }
 }
